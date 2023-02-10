@@ -1,0 +1,11 @@
+table {
+    text-align: center;
+}
+
+th {
+    min-width: 100px;
+}
+
+td input {
+    pointer-events: none;
+}

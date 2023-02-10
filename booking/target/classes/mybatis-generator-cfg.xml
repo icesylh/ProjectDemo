@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="db.properties"></properties>
+    <classPathEntry
+            location="C:\Users\smb\Dev\code\mysql-connector-j-8.0.31.jar"/>
+    <context id="test" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+<!--        <commentGenerator type="com.ian.tran.common.CommentGenerator">-->
+<!--            &lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
+<!--            <property name="suppressAllComments" value="true"/>-->
+<!--            <property name="suppressDate" value="true"/>-->
+<!--            <property name="addRemarkComments" value="true"/>-->
+<!--        </commentGenerator>-->
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://118.24.27.149/booking?characterEncoding=utf8"
+                        userId="root"
+                        password="tx2023@smb.com">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <!-- This property is used to specify whether MyBatis Generator should
+                force the use of java.math.BigDecimal for DECIMAL and NUMERIC fields, -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- targetpakage是即将生成的目录，targetProject是对应的前缀目录。可根据自己需求生到对应目录。下次运行会直接默认覆盖原来位置的文件 -->
+        <!-- 生成模型的包名和位置   映射实体类的位置 -->
+        <javaModelGenerator targetPackage="com.xxx.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置  mapper.xml -->
+        <sqlMapGenerator targetPackage="com.xxx.mapper"
+                         targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置   mapper接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xxx.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 要生成哪些表  tableName的表名，domainObjectName是生成的类名，
+        比如我的映射类为Order，映射接口OrderMapper, 映射文件为OrderMapper.xml，可以添加多个表，
+        里面的几个配置大概意思就是是否允许生成example文件和支持selectByExample。
+        用过Mybatis的应该知道selectByExample，对于一些简单查询用这个还是比较方便的。哈哈、话有点多，记得删除 -->
+        <table tableName="tb_booking" domainObjectName="Booking"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               selectByExampleQueryId="true"></table>
+
+    </context>
+</generatorConfiguration>

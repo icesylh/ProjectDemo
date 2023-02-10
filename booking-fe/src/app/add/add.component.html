@@ -1,0 +1,15 @@
+<div class="content">
+    <select [(ngModel)]="name">
+        <option *ngFor="let item of names" [value]='item'>{{item}}</option>
+    </select>
+    <input [(ngModel)]="content" type="text" placeholder="content">
+    <input [(ngModel)]="date" type="text" placeholder="xxxx-xx-xx">
+    <input [(ngModel)]="time" type="text" placeholder="xx:xx:xx">
+    <input [(ngModel)]="number" type="text" placeholder="number">
+    <select [(ngModel)]="level">
+        <option>high</option>
+        <option>middle</option>
+        <option>normal</option>
+    </select>
+    <button (click)="submit()">submit</button>
+</div>

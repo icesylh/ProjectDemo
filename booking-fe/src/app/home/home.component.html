@@ -1,0 +1,29 @@
+<div>
+    <div>{{name}}</div>
+    <table>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Number</th>
+            <th>Level</th>
+            <th>Option</th>
+        </tr>
+        <tr *ngFor="let item of datas">
+            <td><input type="checkbox" name="" [checked]="item['isDone'] == 1"></td>
+            <td>{{item['name']}}</td>
+            <td>{{item['content']}}</td>
+            <td>{{item['date']}}</td>
+            <td>{{item['time']}}</td>
+            <td>{{item['count']}}</td>
+            <td>{{item['level']}}</td>
+            <td><button (click)="del(item)">删除</button></td>
+        </tr>
+    </table>
+    <button (click)="add()">Add</button>
+
+    <div echarts [options]="barOption" class="chart"></div>
+
+</div>
